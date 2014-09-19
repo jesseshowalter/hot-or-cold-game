@@ -3,13 +3,13 @@ $(document).ready(function(){
 	
 	/*--- Display information modal box ---*/
   	$(".what").click(function(){
-    	$(".overlay").fadeIn(1000);
+    	$(".overlay").fadeIn(500);
 
   	});
 
   	/*--- Hide information modal box ---*/
   	$("a.close").click(function(){
-  		$(".overlay").fadeOut(1000);
+  		$(".overlay").fadeOut(500);
   	});
 
 });
