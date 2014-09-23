@@ -4,13 +4,13 @@ $(document).ready(function(){
 	
 	/*--- Display information modal box ---*/
   	$(".what").click(function(){
-    	$(".overlay").fadeIn(500);
+    	$(".overlay").fadeIn(100);
 
   	});
 
   	/*--- Hide information modal box ---*/
   	$("a.close").click(function(){
-  		$(".overlay").fadeOut(500);
+  		$(".overlay").fadeOut(100);
   	});
 
   	/*--- Create a new Game on button click ---*/
