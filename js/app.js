@@ -36,7 +36,7 @@ $(document).ready(function(){
 
 		$('#count').html(0);
 		counter = null
-		
+
 		$('#guessList').empty();
 	};
 
@@ -50,7 +50,10 @@ $(document).ready(function(){
 			var userGuess = $("#userGuess").val(); // stored users input
 			
 			/*--- Conditional Logic ---*/
-			if(userGuess == secretNum){
+			if(userGuess == null || userGuess == "" || userGuess == undefined){
+				console.log("Empty Entry");
+				// Something goes in here to prevent empty entries
+			}else if(userGuess == secretNum){
 				wordSwap("Winner Winner, Chicken Dinner!");
 				listGuesses();
 			}else if(userGuess > secretNum){
@@ -62,6 +65,8 @@ $(document).ready(function(){
 				hotCold();
 				listGuesses();
 			};
+
+
 
 			/*--- clears the form field for next guess ---*/
 			$("#userGuess").val(""); 
@@ -90,8 +95,19 @@ $(document).ready(function(){
 
 
 		});
+
 	};
 	checkGuess();
+
+	$("#userGuess").keypress(function (e) {
+     	//if the letter is not digit then display error and don't type anything
+    	if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && e.which != 13) {
+    	//display error message
+    	// $("#errmsg").html("Digits Only").show().fadeOut("slow");
+    	wordSwap("Numbers Only Please!");
+           return false;
+		}
+    });
 
 });
 
