@@ -34,23 +34,16 @@ $(document).ready(function(){
 		$("#guessButton").click(function(e){
 			e.preventDefault(); // stops page reload
 			var userGuess = $("#userGuess").val(); // stored users input
-
-			var distanceSecret = 100 - secretNum;
-			var distanceGuess = 100 - userGuess;
-			console.log(distanceSecret + " from the secret number")
-			console.log(distanceGuess + " from the guessed number")
 			
-			/*--- Conditional Logic ---*/ //Needs work
-			if(userGuess == secretNum){
-				console.log("You got it")
-			}else if(distanceGuess - distanceSecret >= 10 || distanceSecret - distanceGuess <= 10){
-				console.log("Jesse You are so Hot!!!")
-			}else if(distanceGuess - distanceSecret >= 20 || distanceSecret - distanceGuess <= 20){
-				console.log("Kinda Hot!!!")
-			}else if(distanceGuess - distanceSecret >= 30 || distanceSecret - distanceGuess <= 30){
-				console.log("Kinda Cold")
+			/*--- Conditional Logic ---*/
+			if(userGuess > secretNum){
+				var distance = userGuess - secretNum;
+				console.log("The guess was a larger number than the secret " + distance);
+			}else if( secretNum > userGuess){
+				var distance = secretNum - userGuess;
+				console.log("The secret was larger than the guess " + distance);
 			}else{
-				console.log("You missed it loser")
+
 			};
 
 			$("#userGuess").val(""); // clears the form field for next guess
