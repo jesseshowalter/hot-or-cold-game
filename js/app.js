@@ -4,18 +4,19 @@ $(document).ready(function(){
 	
 	/*--- Display information modal box ---*/
   	$(".what").click(function(){
-    	$(".overlay").fadeIn(100);
+    	$(".overlay").fadeIn(200);
 
   	});
 
   	/*--- Hide information modal box ---*/
   	$("a.close").click(function(){
-  		$(".overlay").fadeOut(100);
+  		$(".overlay").fadeOut(200);
   	});
 
   	/*--- Create a new Game on button click ---*/
   	$(".new").click(function(){
   		newGame();
+  		wordSwap("New Game, New Guess");
   	});
 
   	/*--- Create the secret number ---*/
@@ -32,7 +33,7 @@ $(document).ready(function(){
 	/*--- Create a new Game ---*/
 	function newGame(){
 		createSecretNum();
-		wordSwap("Make your Guess!");
+		wordSwap("Make your Guess");
 
 		$('#count').html(0);
 		counter = null
