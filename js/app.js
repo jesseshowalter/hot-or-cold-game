@@ -1,3 +1,5 @@
+var counter = 0;
+
 $(document).ready(function(){
 	
 	/*--- Display information modal box ---*/
@@ -32,7 +34,9 @@ $(document).ready(function(){
 		createSecretNum();
 		wordSwap("Make your Guess!");
 	};
+
 	newGame();
+
 
 	/*--- Check user inputed gues and run conditional logic ---*/
 	function checkGuess(){
@@ -43,16 +47,21 @@ $(document).ready(function(){
 			/*--- Conditional Logic ---*/
 			if(userGuess == secretNum){
 				wordSwap("Winner Winner, Chicken Dinner!");
+				listGuesses();
 			}else if(userGuess > secretNum){
 				var distance = userGuess - secretNum;
 				hotCold();
+				listGuesses();
 			}else if(secretNum > userGuess){
 				var distance = secretNum - userGuess;
 				hotCold();
+				listGuesses();
 			};
 
-			$("#userGuess").val(""); // clears the form field for next guess
+			/*--- clears the form field for next guess ---*/
+			$("#userGuess").val(""); 
 
+			/*--- Determines what wors tp present depending on distance to target ---*/
 			function hotCold(){
 				if(distance <= 5){
 					wordSwap("Damn Hot!");
@@ -67,6 +76,13 @@ $(document).ready(function(){
 				};
 			};
 
+			function listGuesses(){
+				console.log("List Guesses");
+				$('#guessList').append('<li>'+ userGuess +'</li>');
+			};
+
+			counter++;
+			$('#count').text(counter);
 		});
 	};
 	checkGuess();
@@ -88,10 +104,11 @@ $(document).ready(function(){
 // checkGuess()
 // hotOrCold()
 // guessFeedback()
-
-//******** NOT DONE ********
 // countGuesses()
 // listGuesses()
+
+//******** NOT DONE ********
+
 // validateGuess
 
 
@@ -107,10 +124,10 @@ $(document).ready(function(){
 // write a named function that recieves user guess and determines which conditional feedback to provide
 // create absolute values(logic) in correspondance to the secret number and the guessed number (hot cold, hotter colder, really hot! really cold!)
 // feedback should replace text in the h2#feedback
+// amount of guesses apperas in span.#count
+// each previously guessed number appended onto the ul#guessList
 
 // ******** NOT DONE ********
-// amount of guesses apperas in span.#count
-// each previusly guessed number appended onto the ul#guestList
 // create check for numerical input for each guess, if wrong display error message
 
 
