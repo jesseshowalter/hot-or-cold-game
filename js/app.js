@@ -33,6 +33,11 @@ $(document).ready(function(){
 	function newGame(){
 		createSecretNum();
 		wordSwap("Make your Guess!");
+
+		$('#count').html(0);
+		counter = null
+		
+		$('#guessList').empty();
 	};
 
 	newGame();
@@ -77,12 +82,13 @@ $(document).ready(function(){
 			};
 
 			function listGuesses(){
-				console.log("List Guesses");
 				$('#guessList').append('<li>'+ userGuess +'</li>');
 			};
 
 			counter++;
 			$('#count').text(counter);
+
+
 		});
 	};
 	checkGuess();
