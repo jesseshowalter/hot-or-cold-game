@@ -22,10 +22,15 @@ $(document).ready(function(){
 		console.log("Generated Random Number = " + secretNum);
 	};
 
+	/*--- Swap words ---*/
+	function wordSwap(wordChoice){
+		$('h2#feedback').text(wordChoice);
+	};
+
 	/*--- Create a new Game ---*/
 	function newGame(){
-		console.log("Created a new game");
 		createSecretNum();
+		wordSwap("Make your Guess!");
 	};
 	newGame();
 
@@ -36,30 +41,37 @@ $(document).ready(function(){
 			var userGuess = $("#userGuess").val(); // stored users input
 			
 			/*--- Conditional Logic ---*/
-			if(userGuess > secretNum){
+			if(userGuess == secretNum){
+				wordSwap("Winner Winner, Chicken Dinner!");
+			}else if(userGuess > secretNum){
 				var distance = userGuess - secretNum;
-				console.log("The guess was a larger number than the secret " + distance);
-			}else if( secretNum > userGuess){
+				hotCold();
+			}else if(secretNum > userGuess){
 				var distance = secretNum - userGuess;
-				console.log("The secret was larger than the guess " + distance);
-			}else{
-
+				hotCold();
 			};
 
 			$("#userGuess").val(""); // clears the form field for next guess
+
+			function hotCold(){
+				if(distance <= 5){
+					wordSwap("Damn Hot!");
+				}else if(distance <= 10){
+					wordSwap("Getting Hot");
+				}else if(distance <= 20){
+					wordSwap("Luke Warm");
+				}else if(distance <= 30) {
+					wordSwap("Cold");
+				}else{
+					wordSwap("Icy Cold");
+				};
+			};
+
 		});
 	};
 	checkGuess();
 
 });
-
-
-
-
-
-
-
-
 
 
 
@@ -74,10 +86,10 @@ $(document).ready(function(){
 // newGame()
 // createSecretNum() 
 // checkGuess()
-
-//******** NOT DONE ********
 // hotOrCold()
 // guessFeedback()
+
+//******** NOT DONE ********
 // countGuesses()
 // listGuesses()
 // validateGuess
@@ -93,10 +105,10 @@ $(document).ready(function(){
 // create a newGame function to run on pageload and on button push
 // create a chooseNumber function to pick a random number between 1 and 100
 // write a named function that recieves user guess and determines which conditional feedback to provide
-
-// ******** NOT DONE ********
 // create absolute values(logic) in correspondance to the secret number and the guessed number (hot cold, hotter colder, really hot! really cold!)
 // feedback should replace text in the h2#feedback
+
+// ******** NOT DONE ********
 // amount of guesses apperas in span.#count
 // each previusly guessed number appended onto the ul#guestList
 // create check for numerical input for each guess, if wrong display error message
